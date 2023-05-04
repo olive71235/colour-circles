@@ -1,0 +1,32 @@
+<html>
+    <title> drawing </title>
+    <body bgcolor="ffffff">
+        <h1>drawing program</h1>
+        <canvas id="imgCanvas" width="600" height="400" onclick="draw(event)" onmousemove="draw(event)" style="border:1px solid #000000;"></canvas>
+        <script>
+            function randColour(){
+                var r = Math.floor(Math.random() *240 + 20);
+                var g = Math.floor(Math.random() *240 + 20);
+                var b = Math.floor(Math.random() *240 + 20);
+                var colour = "#" + r.toString(16) + g.toString(16) + b.toString(16);
+                return colour;
+            }
+            function draw(e){
+                var canvas = document.getElementById("imgCanvas");
+                var ctx = canvas.getContext("2d");
+                var rect = canvas.getBoundingClientRect();
+                var posx = e.clientX - rect.left;
+                var posy = e.clientY - rect.top;
+                ctx.fillStyle = randColour() + "33";
+                ctx.beginPath();
+                ctx.arc(posx, posy, 50, 0, Math.PI * 3);
+                ctx.fill();
+                ctx.strokeStyle = randColour();
+                ctx.beginPath();
+                ctx.arc(posx, posy, 50, 0, Math.PI * 3);
+                ctx.stroke();
+            }
+        </script>
+    </body>
+</html>
+
